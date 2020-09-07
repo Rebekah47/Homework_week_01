@@ -51,7 +51,6 @@ def remove_pet_by_name(pet_shop, pet_name):
     removed_pet = pet_shop["pets"].remove(current_pet)
     return removed_pet
 
-
 def add_pet_to_stock(pet_shop, new_pet):
     pet_shop["pets"].append(new_pet)
 
@@ -85,13 +84,22 @@ def customer_can_afford_pet(customers, new_pet):
 
 #Itergration tests
 
-def sell_pet_to_customer(pet_shop, pet, customers):
+def sell_pet_to_customer(pet_shop, pet, customer):
     if pet:
-        if customer_can_afford_pet(customers, pet):
-            add_pet_to_customer(customers, pet)
+        if customer_can_afford_pet(customer, pet):
+            add_pet_to_customer(customer, pet)
             increase_pets_sold(pet_shop, 1)
-            remove_customer_cash(customers, get_pet_price(pet))
+            remove_customer_cash(customer, get_pet_price(pet))
             add_or_remove_cash(pet_shop, get_pet_price(pet))
+
+
+# def sell_pet_to_customer(pet_shop, pet, customers):
+#     if pet:
+#         if customer_can_afford_pet(customers, pet):
+#             add_pet_to_customer(customers, pet)
+#             increase_pets_sold(pet_shop, 1)
+#             remove_customer_cash(customers, get_pet_price(pet))
+#             add_or_remove_cash(pet_shop, get_pet_price(pet))
             
             
 
